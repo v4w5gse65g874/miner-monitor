@@ -77,12 +77,12 @@ $output = array(
 
 $output[0] = massage_slush($output[0]);
 
-foreach($output as $vv)
+foreach($output as &$vv)
 {
 	$vv['found'] = 1;
 	foreach($vv['data']['workers'] as $k => $v)
 	{
-		if((bool)$v['alive'] === false)
+		if((bool)$v['alive'] === false || $v['hashrate'] === 0)
 		{
 			$vv['found'] = 0;
 			break;
